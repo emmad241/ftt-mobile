@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button loginBtn;
+    Button regButton;
 
     private FirebaseAuth mAuth;
 
@@ -17,9 +21,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-    }
+        loginBtn = findViewById(R.id.mainLoginBtn);
+        regButton = findViewById(R.id.mainRegBtn);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        loginBtn.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        });
+        regButton.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+        });
+    }
+/*
     @Override
     public void onStart() {
         super.onStart();
@@ -29,4 +43,5 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
         }
     }
+    */
 }
