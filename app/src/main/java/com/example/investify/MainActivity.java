@@ -28,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         loginBtn.setOnClickListener(view -> {
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            finish();
         });
         regButton.setOnClickListener(view -> {
             startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+            finish();
         });
     }
 /*

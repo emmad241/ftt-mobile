@@ -5,46 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/mainTitle"
-        android:layout_width="398dp"
-        android:layout_height="149dp"
-        android:layout_marginTop="72dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/_logo" />
-
-    <Button
-        android:id="@+id/mainLoginBtn"
-        android:layout_width="332dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="232dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Log-in"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="635dp"
+        android:orientation="vertical"
+        android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/mainRegBtn"
-        android:layout_width="332dp"
-        android:layout_height="53dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Register"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainLoginBtn"
-        app:layout_constraintVertical_bias="0.333" />
+        <ImageView
+            android:id="@+id/mainTitle"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            app:srcCompat="@drawable/_logo" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="381dp"
+            android:layout_height="315dp"
+            android:padding="16dp"
+            app:srcCompat="@drawable/graph" />
+
+        <Button
+            android:id="@+id/mainLoginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Log-in"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/mainRegBtn"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

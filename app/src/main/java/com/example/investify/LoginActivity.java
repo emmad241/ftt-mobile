@@ -44,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         tvRegHere.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
         });
+
+
     }
 
     private void loginUser(){
@@ -63,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        finish();
                     }else{
                         Toast.makeText(LoginActivity.this, "Login Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

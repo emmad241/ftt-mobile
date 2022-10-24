@@ -43,8 +43,8 @@
 
     <EditText
         android:id="@+id/loginEmail"
-        android:layout_width="233dp"
-        android:layout_height="68dp"
+        android:layout_width="243dp"
+        android:layout_height="76dp"
         android:layout_marginBottom="404dp"
         android:backgroundTint="#FFFDFD"
         android:ems="10"
@@ -54,7 +54,7 @@
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginTitle"
         app:layout_constraintVertical_bias="1.0" />
@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.924" />
 
     <Button
         android:id="@+id/loginBtn"
