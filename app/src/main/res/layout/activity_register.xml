@@ -7,81 +7,85 @@
     android:background="#000000"
     tools:context=".RegisterActivity">
 
-    <TextView
-        android:id="@+id/registerTitle"
-        android:layout_width="209dp"
-        android:layout_height="56dp"
-        android:text="Register"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="34sp"
+    <LinearLayout
+        android:layout_width="317dp"
+        android:layout_height="607dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvLoginhere"
-        android:layout_width="209dp"
-        android:layout_height="56dp"
-        android:text="Or Login Here"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859" />
+        <TextView
+            android:id="@+id/registerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:text="Register"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="48sp" />
 
-    <EditText
-        android:id="@+id/regEditEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFDFD"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="vertical"></LinearLayout>
 
-    <EditText
-        android:id="@+id/regPassword1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regEditEmail"
-        app:layout_constraintVertical_bias="0.207" />
+        <EditText
+            android:id="@+id/regEditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:backgroundTint="#FFFDFD"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
-    <Button
-        android:id="@+id/regBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPassword1"
-        app:layout_constraintVertical_bias="1.0" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <EditText
+            android:id="@+id/regPassword1"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <Button
+            android:id="@+id/regBtn"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/investifyblue"
+            android:text="Register" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:id="@+id/tvLoginhere"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Or Login Here"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

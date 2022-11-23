@@ -21,22 +21,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/mainTitle"
+            android:id="@+id/ivTitle"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/_logo" />
+            android:layout_height="136dp" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="381dp"
-            android:layout_height="315dp"
-            android:padding="16dp"
-            app:srcCompat="@drawable/graph" />
+            android:id="@+id/ivGraph"
+            android:layout_width="match_parent"
+            android:layout_height="325dp" />
 
         <Button
             android:id="@+id/mainLoginBtn"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="87dp"
             android:backgroundTint="#FFFFFF"
             android:text="Log-in"
             android:textColor="@color/black"
@@ -45,7 +42,7 @@
         <Button
             android:id="@+id/mainRegBtn"
             android:layout_width="match_parent"
-            android:layout_height="71dp"
+            android:layout_height="87dp"
             android:backgroundTint="#FFFFFF"
             android:text="Register"
             android:textColor="@color/black"
