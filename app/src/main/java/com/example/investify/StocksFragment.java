@@ -68,6 +68,8 @@ public class StocksFragment extends Fragment {
         // setting adapter to our recycler view.
         assetRV.setAdapter(assetRVAdapter);
 
+
+
         // below line is use to get the data from Firebase Firestore.
         // previously we were saving data on a reference of Courses
         // now we will be getting the data from the same reference.
@@ -79,6 +81,7 @@ public class StocksFragment extends Fragment {
                         // and inside this method we are checking if the received
                         // query snapshot is empty or not.
                         if (!queryDocumentSnapshots.isEmpty()) {
+
                             // if the snapshot is not empty we are
                             // hiding our progress bar and adding
                             // our data in a list.
@@ -87,7 +90,11 @@ public class StocksFragment extends Fragment {
                             for (DocumentSnapshot d : list) {
                                 // after getting this list we are passing
                                 // that list to our object class.
-                                Asset c = d.toObject(Asset.class);
+                                String assetCode = (String) d.get("assetCode");
+                                String assetName = (String) d.get("assetName");
+                                String assetPrice = (String) d.get("assetPrice");
+                                Asset c = new Asset(assetCode, assetName, assetPrice);
+                                // Asset c = d.toObject(Asset.class);
 
                                 // and we will pass this object class
                                 // inside our arraylist which we have
@@ -95,7 +102,6 @@ public class StocksFragment extends Fragment {
                                 assetsArrayList.add(c);
                             }
                             // after adding the data to recycler view.
-                            // we are calling recycler view notifuDataSetChanged
                             // method to notify that data has been changed in recycler view.
                             assetRVAdapter.notifyDataSetChanged();
                         }else {
