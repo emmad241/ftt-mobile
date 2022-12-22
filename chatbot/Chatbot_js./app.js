@@ -15,13 +15,13 @@ const renderUserMessage = () => {
   renderMessageEle(userInput, "user");
   txtInput.value = "";
   setTimeout(() => {
-    renderChatbotResponse(userInput);
+    renderChatbotResponse(userInput.toLowerCase());
     setScrollPosition();
   }, 600);
 };
 
 const renderChatbotResponse = (userInput) => {
-  const res = getChatbotResponse(userInput);
+  const res = getChatbotResponse(userInput.toLowerCase());
   renderMessageEle(res);
 };
 
@@ -38,7 +38,7 @@ const renderMessageEle = (txt, type) => {
 };
 
 const getChatbotResponse = (userInput) => {
-  return responseObj[userInput] == undefined
+  return responseObj[userInput.toLowerCase()] == undefined
     ? "Please try something else"
     : responseObj[userInput];
 };
