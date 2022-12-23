@@ -4,14 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_account_type.xml" value="0.25" />
-        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_home.xml" value="0.176" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_buy.xml" value="0.2" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_main.xml" value="0.18324607329842932" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_my_asset.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/activity_review.xml" value="0.136" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/asset_item.xml" value="0.136" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/bought_item.xml" value="0.264" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/fragment_crypto.xml" value="0.1" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/fragment_home.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/fragment_stocks.xml" value="0.264" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/layout/popup.xml" value="0.144" />
+        <entry key="..\:/Users/aliso/AndroidStudioProjects/Investify/app/src/main/res/menu/popup.xml" value="0.264" />
       </map>
     </option>
   </component>

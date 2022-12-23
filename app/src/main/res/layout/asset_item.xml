@@ -55,7 +55,7 @@
         android:layout_gravity="right|center_horizontal">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buyBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/investifyblue"

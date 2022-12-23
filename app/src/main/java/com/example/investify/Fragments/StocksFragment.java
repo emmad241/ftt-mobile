@@ -1,18 +1,23 @@
-package com.example.investify;
+package com.example.investify.Fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.investify.Adapters.AssetRVAdapter;
+import com.example.investify.BuyActivity;
+import com.example.investify.Classes.Asset;
+import com.example.investify.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,56 +28,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CryptoFragment extends Fragment {
+public class StocksFragment extends Fragment implements AssetRVAdapter.ItemClickListener{
 
-    private RecyclerView assetRV;
+
     private ArrayList<Asset> assetsArrayList;
-    private AssetRVAdapter assetRVAdapter;
-    private FirebaseFirestore db;
     ProgressBar loadingPB;
 
 
-    public CryptoFragment() {
+    public StocksFragment() {
         // Required empty public constructor
     }
 
-
-    public static CryptoFragment newInstance() {
-        CryptoFragment fragment = new CryptoFragment();
+    public static StocksFragment newInstance() {
+        StocksFragment fragment = new StocksFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Activity activity = getActivity();
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_crypto, container, false);
-        assetRV = v.findViewById(R.id.idRVAssets);
+        View v = inflater.inflate(R.layout.fragment_stocks, container, false);
+        RecyclerView assetRV = v.findViewById(R.id.idRVAssets);
         loadingPB = v.findViewById(R.id.idProgressBar);
 
-        db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         // creating our new array list
         assetsArrayList = new ArrayList<>();
-        assetRV.setHasFixedSize(true);
-        assetRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // assetRV.setHasFixedSize(true);
+        assetRV.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // adding our array list to our recycler view adapter class.
-        assetRVAdapter = new AssetRVAdapter(assetsArrayList, getActivity());
-
+        AssetRVAdapter assetRVAdapter = new AssetRVAdapter(assetsArrayList, activity);
+        assetRVAdapter.setClickListener(this);
         // setting adapter to our recycler view.
         assetRV.setAdapter(assetRVAdapter);
+
+
 
         // below line is use to get the data from Firebase Firestore.
         // previously we were saving data on a reference of Courses
         // now we will be getting the data from the same reference.
-        db.collection("CryptoList").get()
+        db.collection("StockList").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -80,6 +84,7 @@ public class CryptoFragment extends Fragment {
                         // and inside this method we are checking if the received
                         // query snapshot is empty or not.
                         if (!queryDocumentSnapshots.isEmpty()) {
+
                             // if the snapshot is not empty we are
                             // hiding our progress bar and adding
                             // our data in a list.
@@ -88,15 +93,18 @@ public class CryptoFragment extends Fragment {
                             for (DocumentSnapshot d : list) {
                                 // after getting this list we are passing
                                 // that list to our object class.
-                                Asset c = d.toObject(Asset.class);
+                                String assetCode = (String) d.get("assetCode");
+                                String assetName = (String) d.get("assetName");
+                                String assetPrice = (String) d.get("assetPrice");
+                                Asset a = new Asset(assetCode, assetName, assetPrice);
+                                //Asset a = d.toObject(Asset.class);
 
                                 // and we will pass this object class
                                 // inside our arraylist which we have
                                 // created for recycler view.
-                                assetsArrayList.add(c);
+                                assetsArrayList.add(a);
                             }
                             // after adding the data to recycler view.
-                            // we are calling recycler view notifuDataSetChanged
                             // method to notify that data has been changed in recycler view.
                             assetRVAdapter.notifyDataSetChanged();
                         }else {
@@ -113,5 +121,12 @@ public class CryptoFragment extends Fragment {
                     }
                 });
         return v;
+    }
+
+    public void onItemClick(View view, int position) {
+        Intent i = new Intent(getActivity(), BuyActivity.class);
+        Asset asset = assetsArrayList.get(position);
+        i.putExtra("asset code", asset.getAssetCode());
+        startActivity(i);
     }
 }

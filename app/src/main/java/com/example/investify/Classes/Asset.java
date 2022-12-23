@@ -1,9 +1,9 @@
-package com.example.investify;
+package com.example.investify.Classes;
 
 public class Asset {
 
     // variables for storing our data.
-    private String assetCode, assetName, assetPrice;
+    private String assetCode, assetName, assetPrice, assetPriceSixMonths, assetPriceTwelveMonths;
 
     public Asset() {
         // empty constructor
@@ -41,6 +41,22 @@ public class Asset {
 
     public void setAssetPrice(String assetPrice) {
         this.assetPrice = assetPrice;
+    }
+
+    public String getAssetPriceSixMonths() {
+        return assetPriceSixMonths;
+    }
+
+    public void setAssetPriceSixMonths(String assetPriceSixMonths) {
+        this.assetPriceSixMonths = assetPriceSixMonths;
+    }
+
+    public String getAssetPriceTwelveMonths() {
+        return assetPriceTwelveMonths;
+    }
+
+    public void setAssetPriceTwelveMonths(String assetPriceTwelveMonths) {
+        this.assetPriceTwelveMonths = assetPriceTwelveMonths;
     }
 }
 

@@ -1,16 +1,13 @@
-package com.example.investify;
+package com.example.investify.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.investify.CryptoFragment;
-import com.example.investify.StocksFragment;
+import com.example.investify.Fragments.CryptoFragment;
+import com.example.investify.Fragments.StocksFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 

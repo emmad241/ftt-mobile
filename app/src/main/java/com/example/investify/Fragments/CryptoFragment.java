@@ -1,18 +1,20 @@
-package com.example.investify;
+package com.example.investify.Fragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.investify.Adapters.AssetRVAdapter;
+import com.example.investify.Classes.Asset;
+import com.example.investify.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,8 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class StocksFragment extends Fragment {
-
+public class CryptoFragment extends Fragment {
 
     private RecyclerView assetRV;
     private ArrayList<Asset> assetsArrayList;
@@ -33,25 +34,27 @@ public class StocksFragment extends Fragment {
     ProgressBar loadingPB;
 
 
-    public StocksFragment() {
+    public CryptoFragment() {
         // Required empty public constructor
     }
 
-    public static StocksFragment newInstance() {
-        StocksFragment fragment = new StocksFragment();
+
+    public static CryptoFragment newInstance() {
+        CryptoFragment fragment = new CryptoFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_stocks, container, false);
+        View v = inflater.inflate(R.layout.fragment_crypto, container, false);
         assetRV = v.findViewById(R.id.idRVAssets);
         loadingPB = v.findViewById(R.id.idProgressBar);
 
@@ -68,12 +71,10 @@ public class StocksFragment extends Fragment {
         // setting adapter to our recycler view.
         assetRV.setAdapter(assetRVAdapter);
 
-
-
         // below line is use to get the data from Firebase Firestore.
         // previously we were saving data on a reference of Courses
         // now we will be getting the data from the same reference.
-        db.collection("StockList").get()
+        db.collection("CryptoList").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -81,7 +82,6 @@ public class StocksFragment extends Fragment {
                         // and inside this method we are checking if the received
                         // query snapshot is empty or not.
                         if (!queryDocumentSnapshots.isEmpty()) {
-
                             // if the snapshot is not empty we are
                             // hiding our progress bar and adding
                             // our data in a list.
@@ -90,11 +90,7 @@ public class StocksFragment extends Fragment {
                             for (DocumentSnapshot d : list) {
                                 // after getting this list we are passing
                                 // that list to our object class.
-                                String assetCode = (String) d.get("assetCode");
-                                String assetName = (String) d.get("assetName");
-                                String assetPrice = (String) d.get("assetPrice");
-                                Asset c = new Asset(assetCode, assetName, assetPrice);
-                                // Asset c = d.toObject(Asset.class);
+                                Asset c = d.toObject(Asset.class);
 
                                 // and we will pass this object class
                                 // inside our arraylist which we have
@@ -102,6 +98,7 @@ public class StocksFragment extends Fragment {
                                 assetsArrayList.add(c);
                             }
                             // after adding the data to recycler view.
+                            // we are calling recycler view notifuDataSetChanged
                             // method to notify that data has been changed in recycler view.
                             assetRVAdapter.notifyDataSetChanged();
                         }else {
