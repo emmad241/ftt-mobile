@@ -15,8 +15,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-cred = credentials.Certificate("key.json")
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate("key.json")
+# firebase_admin.initialize_app(cred)
 
 
 def crypt_data(coin, start_date, end_date):
@@ -31,7 +31,7 @@ def trainModelForStock(coin='AAPL', start_date="1990-01-01", end_date="2022-12-3
         data = crypt_data(coin, start_date, end_date)
 
         # Fill Empty Data by interpolation
-        data = data.fillna(method='fill')
+        data = data.fillna(method='ffill')
 
         # Split Data
         x = data.drop(['Close'], axis=1).values
@@ -52,7 +52,7 @@ def trainModelForStock(coin='AAPL', start_date="1990-01-01", end_date="2022-12-3
         return models
 
     except:
-        print("Error Occur Check Inputs and train again")
+        print("Error Occurred, check Inputs and train again.")
         return None
 
 
@@ -163,7 +163,7 @@ def price_per_six_month(data, coin):
 
 
 # Train Model Configuration
-coin_list = ["GOOG", "TSLA", "AAPL", "MSFT", "AMZN", "BTC-USD", "ETH-USD"]
+coin_list = ["BTC-USD", "ETH-USD", "GOOG", "TSLA", "AAPL", "MSFT", "AMZN"]
 for coin_stock in coin_list:
     print("Training Coin", coin_stock)
     model = SVR(kernel='rbf', C=1e2, gamma=0.1)
@@ -174,11 +174,11 @@ for coin_stock in coin_list:
 
 # Prediction Configuration
 
-prediction_start_date = '2021-12-22'
-prediction_end_date = '2022-12-22'
+prediction_start_date = '2021-01-01'
+prediction_end_date = '2022-01-01'
 
-model_list = ["GOOG_Model.sav", "TSLA_Model.sav", "AAPL_Model.sav", "MSFT_Model.sav", "AMZN_Model.sav", "BTC-USD_Model.sav", "ETH-USD_Model.sav"]
-scaler_list = ["GOOG_scalery.sav", "TSLA_scalery.sav", "AAPL_scalery.sav", "MSFT_scalery.sav", "AMZN_scalery.sav", "BTC-USD_scalery.sav", "ETH-USD_scalery.sav"]
+model_list = ["BTC-USD_Model.sav", "ETH-USD_Model.sav", "GOOG_Model.sav", "TSLA_Model.sav", "AAPL_Model.sav", "MSFT_Model.sav", "AMZN_Model.sav"]
+scaler_list = ["BTC-USD_scalery.sav", "ETH-USD_scalery.sav", "GOOG_scalery.sav", "TSLA_scalery.sav", "AAPL_scalery.sav", "MSFT_scalery.sav", "AMZN_scalery.sav"]
 
 for i in range(len(model_list)):
     model = pickle.load(open(model_list[i], 'rb'))
